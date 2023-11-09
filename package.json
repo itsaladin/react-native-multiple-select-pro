@@ -158,5 +158,9 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "@types/react-native-vector-icons": "^6.4.17",
+    "react-native-vector-icons": "^10.0.1"
   }
 }
