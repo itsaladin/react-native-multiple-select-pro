@@ -11,4 +11,5 @@ export interface DropdownProps extends ViewProps {
   // onDonePress?: (event: GestureResponderEvent) => void;
   data?: any;
   setData?: any;
+  buttonName: string;
 }

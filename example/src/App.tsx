@@ -1,10 +1,10 @@
 import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { Dropdown } from 'react-native-multiple-select-pro';
 
 export default function App() {
-  const [data, setData] = React.useState<string[] | undefined>([]);
+  const [data, setData] = React.useState([]);
+
   const DATA = [
     {
       id: 1,
@@ -46,93 +46,30 @@ export default function App() {
       id: 10,
       title: 'optio molestias',
     },
-    {
-      id: 11,
-      title: 'et ea vero quia',
-    },
-    {
-      id: 12,
-      title: 'in quibusdam tempore',
-    },
-    {
-      id: 13,
-      title: 'dolorum ut in',
-    },
-    {
-      id: 14,
-      title: 'voluptatem eligendi optio',
-    },
-    {
-      id: 15,
-      title: 'eveniet quod temporibus',
-    },
-    {
-      id: 16,
-      title: 'sint suscipit perspiciatis',
-    },
-    {
-      id: 17,
-      title: 'fugit voluptas sed',
-    },
-    {
-      id: 18,
-      title: 'voluptate et',
-    },
-    {
-      id: 19,
-      title: 'adipisci placeat illum',
-    },
-    {
-      id: 20,
-      title: 'doloribus ad',
-    },
-    {
-      id: 21,
-      title: 'asperiores ea ipsam',
-    },
-    {
-      id: 22,
-      title: 'dolor sint quo',
-    },
-    {
-      id: 23,
-      title: 'maxime id vitae',
-    },
-    {
-      id: 24,
-      title: 'autem hic labore',
-    },
-    {
-      id: 25,
-      title: 'rem alias distinctio',
-    },
   ];
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor={'#FFFFFF'} barStyle={'dark-content'} />
       <Dropdown
         dataSet={DATA}
-        bgColor={'#00bbda'}
         height="60%"
         txtColor={'white'}
-        buttonBGColor={'white'}
+        bgColor={'#00bbda'}
         buttonTxtColor={'#00bbda'}
+        buttonBGColor={'white'}
         checkboxColor={'white'}
+        buttonName="Submit!"
         setData={setData}
       />
+      {/* you could get all selected data in data state
+      console.log(data) */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    margin: 15,
   },
 });

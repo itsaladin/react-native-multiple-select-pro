@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
-  Button,
-  Dimensions,
   FlatList,
   StyleSheet,
   Text,
@@ -9,12 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { type DropdownProps } from './types';
 
-const { width } = Dimensions.get('window');
-const COLORS = { primary: '#00bbda', white: '#FFFFFF', black: '#000000' };
+const COLORS = {
+  primary: '#00bbda',
+  white: '#FFFFFF',
+  black: '#000000',
+  borderColor: '#C8C8C8',
+};
 
 const Dropdown = ({
   bgColor,
@@ -25,6 +27,7 @@ const Dropdown = ({
   checkboxColor,
   dataSet,
   setData,
+  buttonName,
 }: DropdownProps) => {
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
@@ -46,6 +49,7 @@ const Dropdown = ({
   const __buttonTxtColor = buttonTxtColor || COLORS.primary;
   const __txtColor = txtColor || COLORS.white;
   const __checkboxColor = checkboxColor || COLORS.white;
+  const __buttonName = buttonName || 'Submit';
 
   const searchFilterFunction = (text: string) => {
     if (text) {
@@ -140,7 +144,12 @@ const Dropdown = ({
     return (
       <TouchableOpacity
         activeOpacity={0.7}
-        style={{ flexDirection: 'row', alignItems: 'center', padding: 5 }}
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          padding: 5,
+          backgroundColor: __bgColor,
+        }}
         onPress={() => getItemPressHandler(item)}
       >
         {findNumberInArray(checkedItems, item?.id) !== null && (
@@ -165,7 +174,7 @@ const Dropdown = ({
         style={{
           height: 0.5,
           width: '100%',
-          backgroundColor: '#C8C8C8',
+          backgroundColor: COLORS.borderColor,
         }}
       />
     );
@@ -256,14 +265,14 @@ const Dropdown = ({
       {isSelect && (
         <View
           style={{
-            backgroundColor: __bgColor,
             borderRadius: 5,
-            elevation: 5,
+            elevation: 4,
+            backgroundColor: 'white',
           }}
         >
           <FlatList
             data={filteredDataSource}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={(_item, index) => index.toString()}
             ItemSeparatorComponent={ItemSeparatorView}
             renderItem={ItemView}
             initialNumToRender={15}
@@ -276,20 +285,18 @@ const Dropdown = ({
             }}
           >
             {search?.length === 0 && (
-              <Button
+              <TouchableOpacity
                 onPress={() => {
                   selectAllHandler();
                 }}
-                borderRadius={5}
-                width={width / 4}
-                height={35}
-                textSize={13}
-                textColor={__buttonTxtColor}
                 style={{
-                  alignSelf: 'center',
-                  paddingBottom: 2,
+                  backgroundColor: __buttonBGColor,
+                  borderRadius: 2,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  paddingLeft: 4,
+                  paddingRight: 8,
                 }}
-                bgColor={__buttonBGColor}
               >
                 <Icon
                   name={
@@ -298,25 +305,21 @@ const Dropdown = ({
                   size={20}
                   color={__buttonTxtColor}
                 />
-                Select All
-              </Button>
+                <Text style={{ color: __buttonTxtColor }}>Select All</Text>
+              </TouchableOpacity>
             )}
-            <Button
+            <TouchableOpacity
               onPress={() => {
                 setIsSelect(false);
               }}
-              borderRadius={5}
-              width={width / 6}
-              height={35}
-              textSize={13}
-              textColor={__buttonTxtColor}
               style={{
-                alignSelf: 'center',
+                backgroundColor: __buttonBGColor,
+                padding: 5,
+                borderRadius: 2,
               }}
-              bgColor={__buttonBGColor}
             >
-              Submit!
-            </Button>
+              <Text style={{ color: __buttonTxtColor }}>{__buttonName}</Text>
+            </TouchableOpacity>
           </View>
         </View>
       )}
@@ -337,6 +340,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 3,
     backgroundColor: 'white',
+    borderRadius: 5,
   },
   input: {
     height: 40,
@@ -364,7 +368,6 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: COLORS.primary,
-    // minHeight: height / 2,
     borderRadius: 5,
     marginHorizontal: 15,
     marginVertical: 5,
