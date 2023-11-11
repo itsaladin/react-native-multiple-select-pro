@@ -254,7 +254,7 @@ const Dropdown = ({
                   name={'cross'}
                   size={20}
                   style={{ paddingHorizontal: 2 }}
-                  color={__buttonTxtColor}
+                  color={'red'}
                   onPress={() => {
                     getItemPressHandler(item);
                   }}
