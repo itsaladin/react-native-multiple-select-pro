@@ -12,4 +12,6 @@ export interface DropdownProps extends ViewProps {
   data?: any;
   setData?: any;
   buttonName: string;
+  hideButtonBGColor: string;
+  hideButtonTxtColor: string;
 }

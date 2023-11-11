@@ -61,6 +61,8 @@ export default function App() {
         checkboxColor={'white'}
         buttonName="Submit!"
         setData={setData}
+        hideButtonBGColor={'#00bbda'}
+        hideButtonTxtColor={'white'}
       />
       {/* you could get all selected data in data state */}
       {console.log(data)}

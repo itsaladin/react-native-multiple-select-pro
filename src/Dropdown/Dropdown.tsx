@@ -29,6 +29,8 @@ const Dropdown = ({
   dataSet,
   setData,
   buttonName,
+  hideButtonBGColor,
+  hideButtonTxtColor,
 }: DropdownProps) => {
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
@@ -52,6 +54,8 @@ const Dropdown = ({
   const __txtColor = txtColor || COLORS.white;
   const __checkboxColor = checkboxColor || COLORS.white;
   const __buttonName = buttonName || 'Submit';
+  const __hideButtonTxtColor = hideButtonTxtColor || COLORS.white;
+  const __hideButtonBGColor = hideButtonBGColor || COLORS.primary;
 
   const searchFilterFunction = (text: string) => {
     if (text) {
@@ -268,7 +272,7 @@ const Dropdown = ({
               setIsHide(true);
             }}
             style={{
-              backgroundColor: __buttonTxtColor,
+              backgroundColor: __hideButtonBGColor,
               borderRadius: 5,
               flexDirection: 'row',
               alignItems: 'center',
@@ -281,7 +285,7 @@ const Dropdown = ({
           >
             <Text
               style={{
-                color: __buttonBGColor,
+                color: __hideButtonTxtColor,
               }}
             >
               Hide !
