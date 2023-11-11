@@ -200,7 +200,11 @@ const Dropdown = ({
           onChangeText={(text) => searchFilterFunction(text)}
           value={search}
           underlineColorAndroid="transparent"
-          placeholder="Search Here"
+          placeholder={
+            checkedItems?.length > 0
+              ? 'Search here (' + checkedItems?.length + ' item selected)'
+              : 'Search here'
+          }
         />
       ) : (
         <TouchableOpacity
@@ -223,7 +227,7 @@ const Dropdown = ({
         </TouchableOpacity>
       )}
       {!isSelect && !isHide && (
-        <View style={{ backgroundColor: 'white', marginTop: 5 }}>
+        <View style={{ backgroundColor: 'white' }}>
           <View
             style={{
               flexWrap: 'wrap',
@@ -239,7 +243,7 @@ const Dropdown = ({
                   key={index}
                   style={{
                     marginTop: 5,
-                    padding: 5,
+                    padding: 2,
                     borderColor: 'gray',
                     borderWidth: 1,
                     borderRadius: 20,
