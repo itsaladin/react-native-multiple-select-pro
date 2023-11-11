@@ -37,7 +37,12 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "reactnative",
+    "multiselect",
+    "multi-select",
+    "allselect",
+    "all-select"
   ],
   "repository": "https://github.com/itsaladin/react-native-multiple-select-pro",
   "author": "Md Alauddin <alauddin12340@gmail.com> (https://github.com/itsaladin)",

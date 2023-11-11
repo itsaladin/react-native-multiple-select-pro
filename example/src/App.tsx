@@ -62,8 +62,8 @@ export default function App() {
         buttonName="Submit!"
         setData={setData}
       />
-      {/* you could get all selected data in data state
-      console.log(data) */}
+      {/* you could get all selected data in data state */}
+      {console.log(data)}
     </View>
   );
 }
