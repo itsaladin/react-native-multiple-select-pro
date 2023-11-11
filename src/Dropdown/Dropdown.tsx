@@ -38,9 +38,9 @@ const Dropdown = ({
   const [checkedItems, setCheckedItems] = useState<any>([]);
   const [, setState] = useState(false);
   const [checkedAll, setCheckedAll] = useState(false);
-  const [isSelect, setIsSelect] = useState(true);
+  const [isSelect, setIsSelect] = useState(false);
   const [selectedItems, setselectedItems] = useState<any>([]);
-  const [isHide, setIsHide] = useState(false);
+  const [isHide, setIsHide] = useState(true);
 
   useEffect(() => {
     setFilteredDataSource(dataSet);
@@ -227,13 +227,12 @@ const Dropdown = ({
         </TouchableOpacity>
       )}
       {!isSelect && !isHide && (
-        <View style={{ backgroundColor: 'white' }}>
+        <View style={{ backgroundColor: 'white', marginTop: 5 }}>
           <View
             style={{
               flexWrap: 'wrap',
               flexGrow: 1,
               flexDirection: 'row',
-              padding: 5,
               height: 'auto',
             }}
           >
@@ -285,6 +284,7 @@ const Dropdown = ({
               alignSelf: 'center',
               justifyContent: 'center',
               marginBottom: 10,
+              marginTop: 10,
             }}
           >
             <Text
