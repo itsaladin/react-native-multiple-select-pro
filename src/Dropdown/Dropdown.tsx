@@ -16,6 +16,7 @@ const COLORS = {
   white: '#FFFFFF',
   black: '#000000',
   borderColor: '#C8C8C8',
+  textColor: '#7F7F7F',
 };
 
 const Dropdown = ({
@@ -243,7 +244,7 @@ const Dropdown = ({
               >
                 <Text
                   style={{
-                    color: 'black',
+                    color: COLORS.textColor,
                     paddingLeft: 5,
                     fontSize: 13,
                   }}
