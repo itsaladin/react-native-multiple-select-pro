@@ -223,6 +223,9 @@ const Dropdown = ({
             flexGrow: 1,
             flexDirection: 'row',
             marginTop: 5,
+            backgroundColor: 'white',
+            height: 'auto',
+            padding: 5,
           }}
         >
           {selectedItems?.map((item: any, index: number) => {
@@ -347,7 +350,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   icon: {
-    paddingTop: 15,
+    paddingTop: 10,
     paddingRight: 15,
   },
   itemStyle: {
