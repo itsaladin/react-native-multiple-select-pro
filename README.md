@@ -77,11 +77,13 @@ export default function App() {
         height="60%"
         txtColor={'white'}
         bgColor={'#00bbda'}
-        buttonTxtColor={'#00bbda'}
-        buttonBGColor={'white'}
+        buttonTxtColor={'white'}
+        buttonBGColor={'#00bbda'}
         checkboxColor={'white'}
         buttonName="Submit!"
         setData={setData}
+        hideButtonBGColor={'#00bbda'}
+        hideButtonTxtColor={'white'}
       />
       {/* you could get all selected data in data state*/}
       {console.log(data)}

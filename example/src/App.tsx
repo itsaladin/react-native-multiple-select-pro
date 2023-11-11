@@ -5,7 +5,7 @@ import { Dropdown } from 'react-native-multiple-select-pro';
 export default function App() {
   const [data, setData] = React.useState([]);
 
-  const DATA = [
+  const DATASET = [
     {
       id: 1,
       title: 'sunt aut facere ',
@@ -52,7 +52,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar backgroundColor={'#FFFFFF'} barStyle={'dark-content'} />
       <Dropdown
-        dataSet={DATA}
+        dataSet={DATASET}
         height="60%"
         txtColor={'white'}
         bgColor={'#00bbda'}
