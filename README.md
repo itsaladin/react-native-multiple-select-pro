@@ -1,6 +1,6 @@
 # react-native-multiple-select-pro
 
-:sparkling_heart:Select all options, single and multiple selectors. This package will provide you item search facility and delete selected facility.:v:
+Select all options, single and multiple selectors. This package will provide you item search facility and delete selected facility.:v::sparkling_heart:
 
 | ![Screenshot a](screenshots/dropdown.gif) |
 | ----------------------------------------- |
@@ -21,13 +21,13 @@ npm install react-native-multiple-select-pro
 
 ```js
 import * as React from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Dropdown } from 'react-native-multiple-select-pro';
 
 export default function App() {
   const [data, setData] = React.useState([]);
 
-  const DATA = [
+  const DATASET = [
     {
       id: 1,
       title: 'sunt aut facere ',
@@ -48,33 +48,12 @@ export default function App() {
       id: 5,
       title: 'nesciunt quas odio',
     },
-    {
-      id: 6,
-      title: 'dolorem eum magni',
-    },
-    {
-      id: 7,
-      title: 'magnam facilis autem',
-    },
-    {
-      id: 8,
-      title: 'dolorem dolore est ipsam',
-    },
-    {
-      id: 9,
-      title: 'nesciunt iure omnis',
-    },
-    {
-      id: 10,
-      title: 'optio molestias',
-    },
   ];
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={'#FFFFFF'} barStyle={'dark-content'} />
       <Dropdown
-        dataSet={DATA}
+        dataSet={DATASET}
         height="60%"
         txtColor={'white'}
         bgColor={'#00bbda'}
@@ -84,8 +63,8 @@ export default function App() {
         buttonName="Submit!"
         setData={setData}
       />
-      {/* you could get all selected data in data state
-      console.log(data) */}
+      {/* you could get all selected data in data state*/}
+      {console.log(data)}
     </View>
   );
 }
