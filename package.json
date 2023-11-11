@@ -1,6 +1,6 @@
 {
   "name": "react-native-multiple-select-pro",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "select single, all options",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
