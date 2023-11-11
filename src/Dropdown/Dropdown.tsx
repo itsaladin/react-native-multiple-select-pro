@@ -35,7 +35,7 @@ const Dropdown = ({
   const [checkedItems, setCheckedItems] = useState<any>([]);
   const [, setState] = useState(false);
   const [checkedAll, setCheckedAll] = useState(false);
-  const [isSelect, setIsSelect] = useState(false);
+  const [isSelect, setIsSelect] = useState(true);
   const [selectedItems, setselectedItems] = useState<any>([]);
 
   useEffect(() => {
