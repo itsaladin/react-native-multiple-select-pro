@@ -2,8 +2,8 @@
 
 Select all options, single and multiple selectors. This package will provide you item search facility and delete selected facility.:v::sparkling_heart:
 
-| ![Screenshot a](screenshots/dropdown.gif) |
-| ----------------------------------------- |
+| ![Screenshot a](gif/MultiSelector.gif) |
+| -------------------------------------- |
 
 ## Installation
 
@@ -22,7 +22,7 @@ npm install react-native-multiple-select-pro
 ```js
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Dropdown } from 'react-native-multiple-select-pro';
+import { MultiSelector } from 'react-native-multiple-select-pro';
 
 export default function App() {
   const [data, setData] = React.useState([]);
@@ -72,7 +72,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Dropdown
+      <MultiSelector
         dataSet={DATASET}
         height="60%"
         txtColor={'white'}
@@ -84,6 +84,7 @@ export default function App() {
         setData={setData}
         hideButtonBGColor={'#00bbda'}
         hideButtonTxtColor={'white'}
+        inputBoxHeight={35}
       />
       {/* you could get all selected data in data state*/}
       {console.log(data)}

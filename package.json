@@ -42,7 +42,10 @@
     "multiselect",
     "multi-select",
     "allselect",
-    "all-select"
+    "all-select",
+    "MultiSelector",
+    "Select-All",
+    "SelectAll"
   ],
   "repository": "https://github.com/itsaladin/react-native-multiple-select-pro",
   "author": "Md Alauddin <alauddin12340@gmail.com> (https://github.com/itsaladin)",

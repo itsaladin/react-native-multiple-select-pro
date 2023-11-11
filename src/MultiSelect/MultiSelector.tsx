@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { type DropdownProps } from './types';
+import { type MultiSelectorProps } from './types';
 
 const COLORS = {
   primary: '#00bbda',
@@ -19,7 +19,7 @@ const COLORS = {
   textColor: '#7F7F7F',
 };
 
-const Dropdown = ({
+const MultiSelector = ({
   bgColor,
   height,
   buttonBGColor,
@@ -31,7 +31,8 @@ const Dropdown = ({
   buttonName,
   hideButtonBGColor,
   hideButtonTxtColor,
-}: DropdownProps) => {
+  inputBoxHeight,
+}: MultiSelectorProps) => {
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
@@ -196,10 +197,16 @@ const Dropdown = ({
     >
       {isSelect ? (
         <TextInput
-          style={styles.textInputStyle}
+          style={[
+            styles.textInputStyle,
+            {
+              height: inputBoxHeight || 35,
+            },
+          ]}
           onChangeText={(text) => searchFilterFunction(text)}
           value={search}
           underlineColorAndroid="transparent"
+          textAlignVertical="auto"
           placeholder={
             checkedItems?.length > 0
               ? 'Search here (' + checkedItems?.length + ' item selected)'
@@ -215,7 +222,13 @@ const Dropdown = ({
           style={styles.inputContainer}
         >
           <TextInput
-            style={styles.input}
+            style={[
+              styles.input,
+              {
+                height: inputBoxHeight || 35,
+              },
+            ]}
+            textAlignVertical="auto"
             onChangeText={(text) => searchFilterFunction(text)}
             value={search}
             underlineColorAndroid="transparent"
@@ -364,12 +377,11 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default MultiSelector;
 
 const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: 'space-between',
-    marginTop: 5,
     flexDirection: 'row',
     shadowColor: 'black',
     shadowOpacity: 0.26,
@@ -380,11 +392,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   input: {
-    height: 40,
     paddingLeft: 20,
+    padding: 0,
   },
   icon: {
-    paddingTop: 10,
+    paddingTop: 8,
     paddingRight: 15,
   },
   itemStyle: {
@@ -395,13 +407,13 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
   },
   textInputStyle: {
-    height: 40,
     borderWidth: 1,
     paddingLeft: 20,
     marginVertical: 5,
     borderColor: COLORS.primary,
     backgroundColor: COLORS.white,
     borderRadius: 5,
+    padding: 0,
   },
   container: {
     backgroundColor: COLORS.primary,

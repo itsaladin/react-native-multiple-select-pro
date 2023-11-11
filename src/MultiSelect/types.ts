@@ -1,6 +1,6 @@
 import type { ViewProps } from 'react-native';
 
-export interface DropdownProps extends ViewProps {
+export interface MultiSelectorProps extends ViewProps {
   bgColor?: string;
   height?: any;
   buttonBGColor?: string;
@@ -14,4 +14,5 @@ export interface DropdownProps extends ViewProps {
   buttonName: string;
   hideButtonBGColor: string;
   hideButtonTxtColor: string;
+  inputBoxHeight?: number;
 }

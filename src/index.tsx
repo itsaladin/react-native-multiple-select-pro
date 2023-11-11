@@ -1,2 +1,2 @@
 // Dropdown Component
-export { default as Dropdown } from './Dropdown/Dropdown';
+export { default as MultiSelector } from './MultiSelect/MultiSelector';
