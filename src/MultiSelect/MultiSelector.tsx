@@ -232,7 +232,11 @@ const MultiSelector = ({
             onChangeText={(text) => searchFilterFunction(text)}
             value={search}
             underlineColorAndroid="transparent"
-            placeholder="Pick item"
+            placeholder={
+              checkedItems?.length > 0
+                ? 'Pick item (' + checkedItems?.length + ' item selected)'
+                : 'Search here'
+            }
             editable={false}
             selectTextOnFocus={false}
           />
