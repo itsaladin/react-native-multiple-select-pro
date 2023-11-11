@@ -38,6 +38,7 @@ const Dropdown = ({
   const [checkedAll, setCheckedAll] = useState(false);
   const [isSelect, setIsSelect] = useState(true);
   const [selectedItems, setselectedItems] = useState<any>([]);
+  const [isHide, setIsHide] = useState(false);
 
   useEffect(() => {
     setFilteredDataSource(dataSet);
@@ -217,52 +218,75 @@ const Dropdown = ({
           <Icon name="arrow-down" style={styles.icon} size={20} />
         </TouchableOpacity>
       )}
-      {!isSelect && (
-        <View
-          style={{
-            flexWrap: 'wrap',
-            flexGrow: 1,
-            flexDirection: 'row',
-            marginTop: 5,
-            backgroundColor: 'white',
-            height: 'auto',
-            padding: 5,
-          }}
-        >
-          {selectedItems?.map((item: any, index: number) => {
-            return (
-              <View
-                key={index}
-                style={{
-                  marginTop: 5,
-                  padding: 5,
-                  borderColor: 'gray',
-                  borderWidth: 1,
-                  borderRadius: 20,
-                  flexDirection: 'row',
-                }}
-              >
-                <Text
+      {!isSelect && !isHide && (
+        <View style={{ backgroundColor: 'white', marginTop: 5 }}>
+          <View
+            style={{
+              flexWrap: 'wrap',
+              flexGrow: 1,
+              flexDirection: 'row',
+              padding: 5,
+              height: 'auto',
+            }}
+          >
+            {selectedItems?.map((item: any, index: number) => {
+              return (
+                <View
+                  key={index}
                   style={{
-                    color: COLORS.textColor,
-                    paddingLeft: 5,
-                    fontSize: 13,
+                    marginTop: 5,
+                    padding: 5,
+                    borderColor: 'gray',
+                    borderWidth: 1,
+                    borderRadius: 20,
+                    flexDirection: 'row',
                   }}
                 >
-                  {item?.title}
-                </Text>
-                <EntypoIcon
-                  name={'cross'}
-                  size={20}
-                  style={{ paddingHorizontal: 2 }}
-                  color={'red'}
-                  onPress={() => {
-                    getItemPressHandler(item);
-                  }}
-                />
-              </View>
-            );
-          })}
+                  <Text
+                    style={{
+                      color: COLORS.textColor,
+                      paddingLeft: 5,
+                      fontSize: 13,
+                    }}
+                  >
+                    {item?.title}
+                  </Text>
+                  <EntypoIcon
+                    name={'cross'}
+                    size={20}
+                    color={'red'}
+                    onPress={() => {
+                      getItemPressHandler(item);
+                    }}
+                  />
+                </View>
+              );
+            })}
+          </View>
+          <TouchableOpacity
+            onPress={() => {
+              setIsHide(true);
+            }}
+            style={{
+              backgroundColor: __buttonTxtColor,
+              borderRadius: 5,
+              flexDirection: 'row',
+              alignItems: 'center',
+              width: '20%',
+              padding: 8,
+              alignSelf: 'center',
+              justifyContent: 'center',
+              marginBottom: 10,
+            }}
+          >
+            <Text
+              style={{
+                color: __buttonBGColor,
+              }}
+            >
+              Hide !
+            </Text>
+          </TouchableOpacity>
         </View>
       )}
 
@@ -315,6 +339,7 @@ const Dropdown = ({
             <TouchableOpacity
               onPress={() => {
                 setIsSelect(false);
+                setIsHide(false);
               }}
               style={{
                 backgroundColor: __buttonBGColor,
