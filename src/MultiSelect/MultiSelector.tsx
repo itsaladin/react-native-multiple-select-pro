@@ -20,8 +20,9 @@ const COLORS = {
 };
 
 const MultiSelector = ({
+  title,
   bgColor,
-  height,
+  containerHeight,
   buttonBGColor,
   buttonTxtColor,
   txtColor,
@@ -48,8 +49,9 @@ const MultiSelector = ({
     setMasterDataSource(dataSet);
   }, []);
 
+  const __title = title || 'Search here';
   const __bgColor = bgColor || COLORS.primary;
-  const __maxHeight = height || '60%';
+  const __maxHeight = containerHeight || '60%';
   const __buttonBGColor = buttonBGColor || COLORS.white;
   const __buttonTxtColor = buttonTxtColor || COLORS.primary;
   const __txtColor = txtColor || COLORS.white;
@@ -57,6 +59,7 @@ const MultiSelector = ({
   const __buttonName = buttonName || 'Submit';
   const __hideButtonTxtColor = hideButtonTxtColor || COLORS.white;
   const __hideButtonBGColor = hideButtonBGColor || COLORS.primary;
+  const __inputBoxHeight = inputBoxHeight || 35;
 
   const searchFilterFunction = (text: string) => {
     if (text) {
@@ -197,20 +200,15 @@ const MultiSelector = ({
     >
       {isSelect ? (
         <TextInput
-          style={[
-            styles.textInputStyle,
-            {
-              height: inputBoxHeight || 35,
-            },
-          ]}
+          style={[styles.firstInput, { height: __inputBoxHeight }]}
           onChangeText={(text) => searchFilterFunction(text)}
           value={search}
           underlineColorAndroid="transparent"
           textAlignVertical="auto"
           placeholder={
             checkedItems?.length > 0
-              ? 'Search here (' + checkedItems?.length + ' item selected)'
-              : 'Search here'
+              ? `${__title} (` + checkedItems?.length + ' item selected)'
+              : __title
           }
         />
       ) : (
@@ -219,15 +217,10 @@ const MultiSelector = ({
             setIsSelect(true);
           }}
           activeOpacity={0.8}
-          style={styles.inputContainer}
+          style={styles.secondInputContainer}
         >
           <TextInput
-            style={[
-              styles.input,
-              {
-                height: inputBoxHeight || 35,
-              },
-            ]}
+            style={[styles.secondInput, { height: __inputBoxHeight }]}
             textAlignVertical="auto"
             onChangeText={(text) => searchFilterFunction(text)}
             value={search}
@@ -240,7 +233,7 @@ const MultiSelector = ({
             editable={false}
             selectTextOnFocus={false}
           />
-          <Icon name="arrow-down" style={styles.icon} size={20} />
+          <Icon name="arrow-down" style={styles.icon} size={18} />
         </TouchableOpacity>
       )}
       {!isSelect && !isHide && (
@@ -258,7 +251,7 @@ const MultiSelector = ({
                 <View
                   key={index}
                   style={{
-                    marginTop: 5,
+                    margin: 2,
                     padding: 2,
                     borderColor: 'gray',
                     borderWidth: 1,
@@ -296,12 +289,11 @@ const MultiSelector = ({
               borderRadius: 5,
               flexDirection: 'row',
               alignItems: 'center',
-              width: '20%',
-              padding: 8,
+              width: '16%',
+              padding: 6,
               alignSelf: 'center',
               justifyContent: 'center',
-              marginBottom: 10,
-              marginTop: 10,
+              marginVertical: 10,
             }}
           >
             <Text
@@ -384,9 +376,9 @@ const MultiSelector = ({
 export default MultiSelector;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    justifyContent: 'space-between',
+  secondInputContainer: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     shadowColor: 'black',
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },
@@ -394,14 +386,14 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: 'white',
     borderRadius: 5,
+    alignItems: 'center',
   },
-  input: {
-    paddingLeft: 20,
+  secondInput: {
+    paddingLeft: 10,
     padding: 0,
   },
   icon: {
-    paddingTop: 8,
-    paddingRight: 15,
+    paddingRight: 5,
   },
   itemStyle: {
     flexWrap: 'wrap',
@@ -410,9 +402,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'normal',
   },
-  textInputStyle: {
+  firstInput: {
     borderWidth: 1,
-    paddingLeft: 20,
+    paddingLeft: 10,
     marginVertical: 5,
     borderColor: COLORS.primary,
     backgroundColor: COLORS.white,

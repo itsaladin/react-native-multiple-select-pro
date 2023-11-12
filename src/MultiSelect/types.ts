@@ -1,18 +1,18 @@
 import type { ViewProps } from 'react-native';
 
 export interface MultiSelectorProps extends ViewProps {
+  title?: string;
+  inputBoxHeight?: number;
+  containerHeight?: any;
   bgColor?: string;
-  height?: any;
   buttonBGColor?: string;
   buttonTxtColor?: string;
   txtColor?: string;
   checkboxColor?: string;
   dataSet: any;
-  // onDonePress?: (event: GestureResponderEvent) => void;
   data?: any;
   setData?: any;
-  buttonName: string;
-  hideButtonBGColor: string;
-  hideButtonTxtColor: string;
-  inputBoxHeight?: number;
+  buttonName?: string;
+  hideButtonBGColor?: string;
+  hideButtonTxtColor?: string;
 }

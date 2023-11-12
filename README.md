@@ -73,8 +73,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <MultiSelector
+        title="User name"
         dataSet={DATASET}
-        height="60%"
+        containerHeight="60%"
         txtColor={'white'}
         bgColor={'#00bbda'}
         buttonTxtColor={'white'}
@@ -101,20 +102,23 @@ const styles = StyleSheet.create({
 
 ## Properties
 
-| Prop                      | Type    | Description                               | Default        |
-| ------------------------- | ------- | ----------------------------------------- | -------------- |
-| <b>dataSet</b>            | Array[] | dataSet you must input array data .       | `required`     |
-| <b>data</b>               | Array   | you will get selected result in date prop | `not-required` |
-| <b>setData</b>            | Array[] | Pass setState data in setData props       | `setState`     |
-| <b>buttonName</b>         | String  | Name of button                            | `#00bbda`      |
-| <b>checkboxColor</b>      | String  | Color of checkbox                         | `#00bbda`      |
-| <b>txtColor</b>           | String  | color of text of body element             | `white`        |
-| <b>buttonTxtColor</b>     | String  | Text color of button                      | `white`        |
-| <b>buttonBGColor</b>      | String  | Background color of button                | `white`        |
-| <b>height</b>             | String  | accepted percentage of table height       | `"60%"`        |
-| <b>bgColor</b>            | String  | Background color of body element          | `#00bbda`      |
-| <b>hideButtonBGColor</b>  | String  | Hide button background color              | `#00bbda`      |
-| <b>hideButtonTxtColor</b> | String  | hide Button text Color                    | `#white`       |
+| Prop                      | Type    | Description                                 | Default             |
+| ------------------------- | ------- | ------------------------------------------- | ------------------- |
+| <b>dataSet</b>            | Array[] | dataSet you must input array data .         | `required`          |
+| <b>title</b>              | String  | Label or title                              | `Search here`       |
+| <b>data</b>               | Array   | you will get selected result in date prop   | `not-required`      |
+| <b>setData</b>            | Array[] | Pass setState data in setData props         | `required callback` |
+| <b>buttonName</b>         | String  | Name of button                              | `#00bbda`           |
+| <b>checkboxColor</b>      | String  | Color of checkbox                           | `#00bbda`           |
+| <b>txtColor</b>           | String  | color of text of body element               | `white`             |
+| <b>buttonTxtColor</b>     | String  | Text color of button                        | `white`             |
+| <b>buttonBGColor</b>      | String  | Background color of button                  | `white`             |
+| <b>height</b>             | String  | accepted percentage of table height         | `"60%"`             |
+| <b>bgColor</b>            | String  | Background color of body element            | `#00bbda`           |
+| <b>hideButtonBGColor</b>  | String  | Hide button background color                | `#00bbda`           |
+| <b>hideButtonTxtColor</b> | String  | hide Button text Color                      | `#white`            |
+| <b>inputBoxHeight</b>     | number  | Height of InputBox                          | `35`                |
+| <b>containerHeight</b>    | string  | Height of container accepte only percentage | `60%`               |
 
 ## Contributing
 

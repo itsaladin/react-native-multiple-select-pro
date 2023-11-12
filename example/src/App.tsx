@@ -52,8 +52,9 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar backgroundColor={'#FFFFFF'} barStyle={'dark-content'} />
       <MultiSelector
+        title="User name"
         dataSet={DATASET}
-        height="60%"
+        containerHeight="60%"
         txtColor={'white'}
         bgColor={'#00bbda'}
         buttonTxtColor={'white'}
