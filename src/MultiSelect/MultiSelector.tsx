@@ -10,6 +10,7 @@ import {
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { type MultiSelectorProps } from './types';
+import { ScrollView } from 'react-native';
 
 const COLORS = {
   primary: '#00bbda',
@@ -238,49 +239,51 @@ const MultiSelector = ({
       )}
       {!isSelect && !isHide && (
         <View style={{ backgroundColor: 'white', marginTop: 5 }}>
-          <View
-            style={{
-              flexWrap: 'wrap',
-              flexGrow: 1,
-              flexDirection: 'row',
-              height: 'auto',
-            }}
-          >
-            {selectedItems?.map((item: any, index: number) => {
-              return (
-                <View
-                  key={index}
-                  style={{
-                    padding: 2,
-                    borderColor: 'gray',
-                    borderWidth: 1,
-                    borderRadius: 20,
-                    flexDirection: 'row',
-                    marginVertical: 2,
-                    marginLeft: 5,
-                  }}
-                >
-                  <Text
+          <ScrollView>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                // height: 180,
+                flexWrap: 'wrap',
+              }}
+            >
+              {selectedItems?.map((item: any, index: number) => {
+                return (
+                  <View
+                    key={index}
                     style={{
-                      color: COLORS.textColor,
-                      paddingLeft: 5,
-                      fontSize: 13,
+                      padding: 2,
+                      borderColor: 'gray',
+                      borderWidth: 1,
+                      borderRadius: 20,
+                      flexDirection: 'row',
+                      marginVertical: 2,
+                      marginLeft: 5,
                     }}
                   >
-                    {item?.title}
-                  </Text>
-                  <EntypoIcon
-                    name={'cross'}
-                    size={20}
-                    color={'red'}
-                    onPress={() => {
-                      getItemPressHandler(item);
-                    }}
-                  />
-                </View>
-              );
-            })}
-          </View>
+                    <Text
+                      style={{
+                        color: COLORS.textColor,
+                        paddingLeft: 5,
+                        fontSize: 13,
+                      }}
+                    >
+                      {item?.title}
+                    </Text>
+                    <EntypoIcon
+                      name={'cross'}
+                      size={20}
+                      color={'red'}
+                      onPress={() => {
+                        getItemPressHandler(item);
+                      }}
+                    />
+                  </View>
+                );
+              })}
+            </View>
+          </ScrollView>
           <TouchableOpacity
             onPress={() => {
               setIsHide(true);
@@ -290,8 +293,8 @@ const MultiSelector = ({
               borderRadius: 5,
               flexDirection: 'row',
               alignItems: 'center',
-              width: '16%',
-              padding: 6,
+              width: 55,
+              height: 30,
               alignSelf: 'center',
               justifyContent: 'center',
               marginVertical: 10,
