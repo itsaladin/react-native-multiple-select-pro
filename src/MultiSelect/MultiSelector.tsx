@@ -227,8 +227,8 @@ const MultiSelector = ({
             underlineColorAndroid="transparent"
             placeholder={
               checkedItems?.length > 0
-                ? 'Pick item (' + checkedItems?.length + ' item selected)'
-                : 'Search here'
+                ? `${__title} (` + checkedItems?.length + ' item selected)'
+                : __title + ' Search Here'
             }
             editable={false}
             selectTextOnFocus={false}
@@ -251,12 +251,13 @@ const MultiSelector = ({
                 <View
                   key={index}
                   style={{
-                    margin: 2,
                     padding: 2,
                     borderColor: 'gray',
                     borderWidth: 1,
                     borderRadius: 20,
                     flexDirection: 'row',
+                    marginVertical: 2,
+                    marginLeft: 5,
                   }}
                 >
                   <Text

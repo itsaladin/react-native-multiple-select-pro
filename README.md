@@ -73,7 +73,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <MultiSelector
-        title="User name"
+        title="User Name"
         dataSet={DATASET}
         containerHeight="60%"
         txtColor={'white'}
