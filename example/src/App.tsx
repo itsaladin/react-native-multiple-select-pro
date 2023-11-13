@@ -163,7 +163,7 @@ export default function App() {
       title: 'nesciunt iure omnis',
     },
     {
-      id: 30,
+      id: 40,
       title: 'optio molestias',
     },
   ];
@@ -180,7 +180,7 @@ export default function App() {
         buttonTxtColor={'white'}
         buttonBGColor={'#00bbda'}
         checkboxColor={'white'}
-        buttonName="Submit!"
+        buttonName="Done!"
         setData={setData}
         hideButtonBGColor={'#00bbda'}
         hideButtonTxtColor={'white'}

@@ -18,6 +18,7 @@ const COLORS = {
   black: '#000000',
   borderColor: '#C8C8C8',
   textColor: '#7F7F7F',
+  red: 'red',
 };
 
 const MultiSelector = ({
@@ -62,7 +63,7 @@ const MultiSelector = ({
   const __hideButtonBGColor = hideButtonBGColor || COLORS.primary;
   const __inputBoxHeight = inputBoxHeight || 35;
 
-  const searchFilterFunction = (text: string) => {
+  const searchFilterFunction = (text?: string) => {
     if (text) {
       const newData = masterDataSource.filter(function (item: any) {
         const itemData = item.title
@@ -75,7 +76,7 @@ const MultiSelector = ({
       setSearch(text);
     } else {
       setFilteredDataSource(masterDataSource);
-      setSearch(text);
+      setSearch(text!);
     }
   };
 
@@ -191,6 +192,40 @@ const MultiSelector = ({
     );
   };
 
+  const renderItem = ({ item }: any) => {
+    return (
+      <View
+        style={{
+          padding: 2,
+          borderColor: 'gray',
+          borderWidth: 1,
+          borderRadius: 20,
+          flexDirection: 'row',
+          marginVertical: 2,
+          marginLeft: 5,
+        }}
+      >
+        <Text
+          style={{
+            color: COLORS.textColor,
+            paddingLeft: 5,
+            fontSize: 13,
+          }}
+        >
+          {item?.title}
+        </Text>
+        <EntypoIcon
+          name={'cross'}
+          size={20}
+          color={'red'}
+          onPress={() => {
+            getItemPressHandler(item);
+          }}
+        />
+      </View>
+    );
+  };
+
   return (
     <View
       style={{
@@ -216,14 +251,16 @@ const MultiSelector = ({
         <TouchableOpacity
           onPress={() => {
             setIsSelect(true);
+            setselectedItems([]);
           }}
-          activeOpacity={0.8}
+          activeOpacity={0.7}
           style={styles.secondInputContainer}
         >
           <TextInput
             style={[styles.secondInput, { height: __inputBoxHeight }]}
             textAlignVertical="auto"
             onChangeText={(text) => searchFilterFunction(text)}
+            onPressIn={() => searchFilterFunction()}
             value={search}
             underlineColorAndroid="transparent"
             placeholder={
@@ -239,75 +276,78 @@ const MultiSelector = ({
       )}
       {!isSelect && !isHide && (
         <View style={{ backgroundColor: 'white', marginTop: 5 }}>
-          <ScrollView>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                // height: 180,
-                flexWrap: 'wrap',
-              }}
-            >
-              {selectedItems?.map((item: any, index: number) => {
-                return (
-                  <View
-                    key={index}
-                    style={{
-                      padding: 2,
-                      borderColor: 'gray',
-                      borderWidth: 1,
-                      borderRadius: 20,
-                      flexDirection: 'row',
-                      marginVertical: 2,
-                      marginLeft: 5,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: COLORS.textColor,
-                        paddingLeft: 5,
-                        fontSize: 13,
-                      }}
-                    >
-                      {item?.title}
-                    </Text>
-                    <EntypoIcon
-                      name={'cross'}
-                      size={20}
-                      color={'red'}
-                      onPress={() => {
-                        getItemPressHandler(item);
-                      }}
-                    />
-                  </View>
-                );
-              })}
-            </View>
+          <ScrollView horizontal={false}>
+            <ScrollView horizontal={true}>
+              {selectedItems && (
+                <FlatList
+                  nestedScrollEnabled
+                  data={selectedItems}
+                  renderItem={renderItem}
+                  initialNumToRender={15}
+                  numColumns={2}
+                  contentContainerStyle={styles.flatListContainer}
+                />
+              )}
+            </ScrollView>
           </ScrollView>
-          <TouchableOpacity
-            onPress={() => {
-              setIsHide(true);
-            }}
-            style={{
-              backgroundColor: __hideButtonBGColor,
-              borderRadius: 5,
-              flexDirection: 'row',
-              alignItems: 'center',
-              width: 55,
-              height: 30,
-              alignSelf: 'center',
-              justifyContent: 'center',
-              marginVertical: 10,
-            }}
+          <View
+            style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}
           >
-            <Text
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => {
+                setIsHide(true);
+                setCheckedItems([]);
+                setCheckedAll(false);
+                searchFilterFunction('');
+              }}
               style={{
-                color: __hideButtonTxtColor,
+                backgroundColor: COLORS.red,
+                borderRadius: 5,
+                flexDirection: 'row',
+                alignItems: 'center',
+                width: 55,
+                height: 30,
+                alignSelf: 'center',
+                justifyContent: 'center',
+                marginVertical: 10,
               }}
             >
-              Hide !
-            </Text>
-          </TouchableOpacity>
+              <Text
+                style={{
+                  color: __hideButtonTxtColor,
+                }}
+              >
+                Clear
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => {
+                setIsHide(true);
+                searchFilterFunction('');
+              }}
+              style={{
+                backgroundColor: __hideButtonBGColor,
+                borderRadius: 5,
+                flexDirection: 'row',
+                alignItems: 'center',
+                width: 55,
+                height: 30,
+                alignSelf: 'center',
+                justifyContent: 'center',
+                marginVertical: 10,
+              }}
+            >
+              <Text
+                style={{
+                  color: __hideButtonTxtColor,
+                }}
+              >
+                Hide !
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )}
 
@@ -335,6 +375,7 @@ const MultiSelector = ({
           >
             {search?.length === 0 && (
               <TouchableOpacity
+                activeOpacity={0.7}
                 onPress={() => {
                   selectAllHandler();
                 }}
@@ -358,9 +399,11 @@ const MultiSelector = ({
               </TouchableOpacity>
             )}
             <TouchableOpacity
+              activeOpacity={0.7}
               onPress={() => {
                 setIsSelect(false);
                 setIsHide(false);
+                setSearch('');
               }}
               style={{
                 backgroundColor: __buttonBGColor,
@@ -380,6 +423,9 @@ const MultiSelector = ({
 export default MultiSelector;
 
 const styles = StyleSheet.create({
+  flatListContainer: {
+    justifyContent: 'space-between',
+  },
   secondInputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

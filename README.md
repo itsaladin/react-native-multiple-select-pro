@@ -81,7 +81,7 @@ export default function App() {
         buttonTxtColor={'white'}
         buttonBGColor={'#00bbda'}
         checkboxColor={'white'}
-        buttonName="Submit!"
+        buttonName="Done!"
         setData={setData}
         hideButtonBGColor={'#00bbda'}
         hideButtonTxtColor={'white'}
@@ -108,11 +108,11 @@ const styles = StyleSheet.create({
 | <b>title</b>              | String  | Label or title                              | `Search here`       |
 | <b>data</b>               | Array   | you will get selected result in date prop   | `not-required`      |
 | <b>setData</b>            | Array[] | Pass setState data in setData props         | `required callback` |
-| <b>buttonName</b>         | String  | Name of button                              | `#00bbda`           |
+| <b>buttonName</b>         | String  | Name of button                              | `Done`              |
 | <b>checkboxColor</b>      | String  | Color of checkbox                           | `#00bbda`           |
 | <b>txtColor</b>           | String  | color of text of body element               | `white`             |
 | <b>buttonTxtColor</b>     | String  | Text color of button                        | `white`             |
-| <b>buttonBGColor</b>      | String  | Background color of button                  | `white`             |
+| <b>buttonBGColor</b>      | String  | Background color of button                  | `#00bbda`           |
 | <b>height</b>             | String  | accepted percentage of table height         | `"60%"`             |
 | <b>bgColor</b>            | String  | Background color of body element            | `#00bbda`           |
 | <b>hideButtonBGColor</b>  | String  | Hide button background color                | `#00bbda`           |
