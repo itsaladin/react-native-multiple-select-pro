@@ -71,11 +71,11 @@ export default function App() {
   ];
 
   return (
-    <View style={styles.container}>
+    <View style={{ maxHeight: '50%' }}>
       <MultiSelector
         title="User Name"
         dataSet={DATASET}
-        containerHeight="60%"
+        containerHeight="75%"
         txtColor={'white'}
         bgColor={'#00bbda'}
         buttonTxtColor={'white'}
@@ -87,17 +87,19 @@ export default function App() {
         hideButtonTxtColor={'white'}
         inputBoxHeight={35}
       />
-      {/* you could get all selected data in data state*/}
+      {/* you could get all selected data in data state */}
       {console.log(data)}
     </View>
   );
 }
+```
 
-const styles = StyleSheet.create({
-  container: {
-    margin: 15,
-  },
-});
+If your DATASET is too large you must wrap MultiSelector by View with maxHeight="50%". You could manage total height with MaxHeight and containerHeight props.
+
+```js
+<View style={{ maxHeight: '50%' }}>
+  <MultiSelector >
+</View>
 ```
 
 ## Properties

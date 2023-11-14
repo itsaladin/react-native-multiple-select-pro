@@ -152,7 +152,7 @@ const MultiSelector = ({
     return uniqueArray;
   }
 
-  const ItemView = ({ item }: any) => {
+  const SelectionListItemView = ({ item }: any) => {
     return (
       <TouchableOpacity
         activeOpacity={0.7}
@@ -180,6 +180,7 @@ const MultiSelector = ({
       </TouchableOpacity>
     );
   };
+
   const ItemSeparatorView = () => {
     return (
       <View
@@ -192,7 +193,7 @@ const MultiSelector = ({
     );
   };
 
-  const renderItem = ({ item }: any) => {
+  const SelectedListItemView = ({ item }: any) => {
     return (
       <View
         style={{
@@ -282,7 +283,7 @@ const MultiSelector = ({
                 <FlatList
                   nestedScrollEnabled
                   data={selectedItems}
-                  renderItem={renderItem}
+                  renderItem={SelectedListItemView}
                   initialNumToRender={15}
                   numColumns={2}
                   contentContainerStyle={styles.flatListContainer}
@@ -363,7 +364,7 @@ const MultiSelector = ({
             data={filteredDataSource}
             keyExtractor={(_item, index) => index.toString()}
             ItemSeparatorComponent={ItemSeparatorView}
-            renderItem={ItemView}
+            renderItem={SelectionListItemView}
             initialNumToRender={15}
           />
           <View
@@ -402,8 +403,10 @@ const MultiSelector = ({
               activeOpacity={0.7}
               onPress={() => {
                 setIsSelect(false);
-                setIsHide(false);
-                setSearch('');
+                if (selectedItems?.length > 0) {
+                  setIsHide(false);
+                  setSearch('');
+                }
               }}
               style={{
                 backgroundColor: __buttonBGColor,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { MultiSelector } from 'react-native-multiple-select-pro';
 
 export default function App() {
@@ -169,12 +169,11 @@ export default function App() {
   ];
 
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor={'#FFFFFF'} barStyle={'dark-content'} />
+    <View style={{ maxHeight: '50%' }}>
       <MultiSelector
         title="User Name"
         dataSet={DATASET}
-        containerHeight="60%"
+        containerHeight="75%"
         txtColor={'white'}
         bgColor={'#00bbda'}
         buttonTxtColor={'white'}
@@ -191,9 +190,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 15,
-  },
-});
